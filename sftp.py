@@ -8,7 +8,7 @@ print("### sftp transfer ###")
 def transfer(server,user,rsakey,rsakeypass):
     sftp = pysftp.Connection(server,username=user,private_key=rsakey,private_key_pass=rsakeypass)
     sftp.listdir(remotepath='.')
-    #sftp.put("/tmp/hello.txt", "/home/grob/hello1.txt")
+    #sftp.put("localfile", "remotefile")
     sftp.close()
 
 ##server = raw_input("enter server: ")
