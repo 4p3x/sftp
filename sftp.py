@@ -5,16 +5,16 @@ import getpass
 print("### sftp transfer ###")
 
 
-def transfer(server,user,pw):
-    sftp = pysftp.Connection(server,username=user,password=pw)
-    sftp.put("/tmp/hello.txt", "/home/grob/hello1.txt")
+def transfer(server,user,rsakey,rsakeypass):
+    sftp = pysftp.Connection(server,username=user,private_key=rsakey,private_key_pass=rsakeypass)
+    sftp.listdir(remotepath='.')
+    #sftp.put("/tmp/hello.txt", "/home/grob/hello1.txt")
     sftp.close()
 
 ##server = raw_input("enter server: ")
 ##user = raw_input("enter username: ")
-pw = getpass.getpass(prompt="enter pass: ", stream=None)
+rsakp_input = getpass.getpass(prompt="enter keypass: ", stream=None)
 
-transfer("localhost","grob",pw)
+transfer("","","", rsakp_input)
 
 print("done. bye.")
-
